@@ -43,8 +43,8 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    return CupertinoPageScaffold(
-      child: createHomeScreen(context),
+    return Scaffold(
+      body: createHomeScreen(context),
     );
   }
 
@@ -85,19 +85,22 @@ class _HomePageState extends State<HomePage> {
   foregroundCard(BuildContext context) {
     double marginLeft = MediaQuery.of(context).size.width / 0.25;
     double marginTop = MediaQuery.of(context).size.height / 0.25;
-    return new Container(
-      alignment: Alignment.center,
-      color: Colors.transparent,
-      padding: new EdgeInsets.symmetric(
-        vertical: MediaQuery.of(context).size.height * 0.1,
-        horizontal: 40.0,
-      ),
+    return SingleChildScrollView(
+      physics: BouncingScrollPhysics(),
       child: new Container(
-        height: MediaQuery.of(context).size.height * 0.85,
-        width: MediaQuery.of(context).size.width,
-        child: Card(
-          color: Colors.white,
-          child: buildForm(context),
+        alignment: Alignment.center,
+        color: Colors.transparent,
+        padding: new EdgeInsets.symmetric(
+          vertical: MediaQuery.of(context).size.height * 0.1,
+          horizontal: 40.0,
+        ),
+        child: new Container(
+          height: MediaQuery.of(context).size.height * 0.85,
+          width: MediaQuery.of(context).size.width,
+          child: Card(
+            color: Colors.white,
+            child: buildForm(context),
+          ),
         ),
       ),
     );
@@ -117,9 +120,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   buildIcon() {
-    return FlutterLogo(
-      size: 70.0,
-    );
+    return Image.asset('assets/volvo.jpeg',);
   }
 
   buildTitle() {
